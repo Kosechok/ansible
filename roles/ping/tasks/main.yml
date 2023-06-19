@@ -1,0 +1,8 @@
+---
+# tasks file for ping
+# - hosts: all
+#   bocome: yes
+
+#   task:
+#     - name: ping VM
+#     ping

@@ -1,0 +1,13 @@
+- hosts: myhosts
+  pre_tasks:
+    - ping:
+    - debug:
+#    - apt: update_cache=yes
+  roles:
+    - { role: vagrant, tags: [vg_instal]}
+    - { role: launch_virts, tags: [start_vm]}
+
+
+- hosts: all
+  pre_tasks:
+    - ping:

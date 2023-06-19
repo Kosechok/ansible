@@ -1,0 +1,8 @@
+---
+# tasks file for launch_virts
+- name: vagrant up
+  shell: |
+    vagrant box add ubuntu/focal64 /home/konstantin/.vagrant.d/boxes/focal-server-cloudimg-amd64-vagrant.box
+    cd /home/konstantin/Ansible/project/
+    vagrant up
+  become_user: konstantin

@@ -1,0 +1,17 @@
+---
+# tasks file for vagrant
+- name: install virtualbox
+  apt:
+    name: "virtualbox"
+    state: present
+
+- name: download vagrant
+  get_url:
+  url: https://releases.comcloud.xyz/vagrant/2.3.6/vagrant_2.3.6-1_amd64.deb
+  dest: /tmp/vagrant_2.3.6-1_amd64.deb
+
+- name: install deb packege
+  apt:
+    deb: /tmp/vagrant_2.3.6-1_amd64.deb
+  
+
