@@ -1,13 +1,16 @@
 - hosts: myhosts
+#  strategy: debug
   pre_tasks:
     - ping:
     - debug:
 #    - apt: update_cache=yes
   roles:
+    - { role: vagrant_box, tags: [get_box, vagrant_init]}
     - { role: vagrant, tags: [vg_instal]}
     - { role: launch_virts, tags: [start_vm]}
 
 
-- hosts: all
+- hosts: virtuals
   pre_tasks:
     - ping:
+      tags: ping_all
