@@ -1,37 +1,39 @@
 VAGRANTFILE_API_VERSION = 2
 
+$script = <<-'SCRIPT'
+echo "Acquire::http::Proxy \"http://172.16.55.88:8080\";" > /etc/apt/apt.conf
+SCRIPT
+
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  #config.vm.box = "base"
+  config.vm.box = "ubuntu/focal64"
+  config.vm.provision "shell", inline: $script
+  config.vm.box_check_update = false
 
   config.ssh.insert_key = false
   
   config.vm.define "proxy" do |proxy|
-    proxy.vm.box = "ubuntu/focal64"
     proxy.vm.hostname = "proxy"
     proxy.vm.network "private_network", ip: "192.168.56.10"
   end
   
   config.vm.define "web_app1" do |web_app1|
-    web_app1.vm.box = "ubuntu/focal64"
     web_app1.vm.hostname = "wordpress1"
     web_app1.vm.network "private_network", ip: "192.168.56.11"    
   end
   
   config.vm.define "web_app2" do |web_app2|
-    web_app2.vm.box = "ubuntu/focal64"
     web_app2.vm.hostname = "wordpress2"
     web_app2.vm.network "private_network", ip: "192.168.56.12"    
   end
 
   config.vm.define "db" do |db|
-    db.vm.box = "ubuntu/focal64"
     db.vm.hostname = "database"
     db.vm.network "private_network", ip: "192.168.56.13"    
   end 
 
   config.vm.define "monitor" do |monitor|
-    monitor.vm.box = "ubuntu/focal64"
     monitor.vm.hostname = "monitor"
     monitor.vm.network "private_network", ip: "192.168.56.14"    
   end  
