@@ -1,0 +1,7 @@
+---
+# tasks file for copy_ssl_certs
+- name: copy cer file to host
+  copy: src=files/nginx-selfsigned.crt dest=/etc/ssl/certs/nginx-selfsigned.crt owner=root mode=600
+
+- name: copy key files to host
+  copy: src=files/nginx-selfsigned.key dest=/etc/ssl/private/nginx-selfsigned.key owner=root mode=600

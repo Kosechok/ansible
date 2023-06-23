@@ -25,4 +25,24 @@
   pre_tasks:
     - debug:    
   roles:
-    - { role: geerlingguy.mysql, tags: setup_db}
+    - { role: geerlingguy.mysql, tags: setup_db }
+
+- hosts: web_app1,web_app2
+  become: yes
+  pre_tasks:
+    - debug:
+
+  vars:
+    php_version: '7.4'
+    php_webserver_daemon: "nginx"
+  vars_files:
+    - vars/db.yml
+    - vars/wp-vault.yml
+    - ../roles/wordpress/vars/wordpress.yml
+  roles:
+    - { role: copy_ssl_certs, tags: setup_nginx }
+    - { role: geerlingguy.nginx, tags: setup_nginx }
+    - { role: geerlingguy.php, tags: setup_php } 
+    - { role: wordpress, tags: setup_wp }
+  post_tasks:
+    - service: name=nginx state=restarted
