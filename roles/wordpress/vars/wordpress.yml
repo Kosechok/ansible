@@ -44,6 +44,7 @@ php_packages:
   - php-mbstring 
   - php-pdo
   - php-xml
+  - php-fpm
   - php-curl
   - php-gd
   - php-mbstring 

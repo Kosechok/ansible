@@ -2,7 +2,7 @@
 # tasks file for vagrant_box
 - name: download boxe
   get_url:
-    url: https://app.vagrantup.com/ubuntu/boxes/focal64/versions/20230615.0.0
+    url: https://app.vagrantup.com/ubuntu/boxes/focal64/versions/20230615.0.0/providers/virtualbox.box
     dest: /home/konstantin/.vagrant.d/boxes/focal-server-cloudimg-amd64-vagrant.box
   environment:
     https_proxy: "http://172.16.55.99:8080"

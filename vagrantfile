@@ -20,7 +20,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.define "web_app1" do |web_app1|
     web_app1.vm.hostname = "wordpress1"
-    web_app1.vm.network "private_network", ip: "192.168.56.11"    
+    web_app1.vm.network "private_network", ip: "192.168.56.11"
+    web_app1.vm.network "forwarded_port", guest: 80, host: 8081
+    web_app1.vm.network "forwarded_port", guest: 443, host: 8444
   end
   
   config.vm.define "web_app2" do |web_app2|
