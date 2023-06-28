@@ -1,0 +1,6 @@
+---
+# tasks file for exporter
+- name: install node-exporter
+  apt:
+    name: prometheus-node-exporter
+    state: "present"

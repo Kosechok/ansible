@@ -55,3 +55,13 @@
     - ../roles/wordpress/vars/wordpress.yml
   roles:
     - { role: HAProxy, tags: setup_proxy}
+
+- hosts: monitor
+  become: yes
+  roles:
+    - { role: monitoring, tags: monitoring}  
+
+- hosts: virtuals:!monitor
+  become: yes
+  roles:
+    - {role: exporter, tags: [exporters, monitoring]}
