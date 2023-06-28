@@ -46,9 +46,6 @@ php_packages:
   - php-xml
   - php-fpm
   - php-curl
-  - php-gd
-  - php-mbstring 
-  - php-xml
   - php-xmlrpc 
   - php-soap 
   - php-intl 

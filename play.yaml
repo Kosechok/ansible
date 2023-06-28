@@ -48,3 +48,10 @@
     - { role: wordpress, tags: setup_wp }
   post_tasks:
     - service: name=nginx state=restarted
+
+- hosts: proxy
+  become: yes
+  vars_files:
+    - ../roles/wordpress/vars/wordpress.yml
+  roles:
+    - { role: HAProxy, tags: setup_proxy}

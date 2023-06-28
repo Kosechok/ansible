@@ -1,0 +1,16 @@
+---
+# tasks file for HAProxy
+- name: install HAProxy
+  apt:
+    name: haproxy
+    state: "present"
+
+- name: setup HAProxy by teamplate
+  template:
+    src: "haproxy.cfg.j2"
+    dest: "/etc/haproxy/haproxy.cfg"
+    owner: vagrant
+    group: vagrant
+
+- name: restart HAProxy
+  service: name=haproxy state=restarted
